@@ -11,6 +11,8 @@ class SignUpVehicle extends StatefulWidget {
 
 class _SignUpVehicleState extends State<SignUpVehicle> {
   final GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
+  late String password_check;
+  late String confirm_password;
 
   TextEditingController _streetController = TextEditingController();
   TextEditingController _cityController = TextEditingController();
@@ -242,6 +244,9 @@ class _SignUpVehicleState extends State<SignUpVehicle> {
                               ),
                             ),
                           ),
+                          onChanged: (password) {
+                            password_check = password;
+                          },
                           controller: _passwordController,
                           validator: (password) {
                             if (password == null || password.isEmpty) {
@@ -289,11 +294,16 @@ class _SignUpVehicleState extends State<SignUpVehicle> {
                               ),
                             ),
                           ),
+                          onChanged: (confirmPassword) {
+                            confirm_password = confirmPassword;
+                          },
                           controller: _confirmPasswordController,
                           validator: (confirmPassword) {
                             if (confirmPassword == null ||
                                 confirmPassword.isEmpty) {
                               return "Please enter your password";
+                            } else if (confirmPassword != password_check) {
+                              return "Passwords do not match";
                             }
 
                             return null;
