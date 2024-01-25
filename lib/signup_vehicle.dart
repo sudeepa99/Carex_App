@@ -2,10 +2,21 @@ import 'package:carex/home_screen.dart';
 import 'package:carex/signup_vehicle.dart';
 import 'package:flutter/material.dart';
 
-class SignUpVehicle extends StatelessWidget {
+class SignUpVehicle extends StatefulWidget {
   SignUpVehicle({super.key});
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  @override
+  State<SignUpVehicle> createState() => _SignUpVehicleState();
+}
+
+class _SignUpVehicleState extends State<SignUpVehicle> {
+  final GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
+
+  TextEditingController _streetController = TextEditingController();
+  TextEditingController _cityController = TextEditingController();
+  TextEditingController _provinceController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +37,9 @@ class SignUpVehicle extends StatelessWidget {
                 alignment: Alignment.topLeft,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Sign Up With",
@@ -53,6 +64,7 @@ class SignUpVehicle extends StatelessWidget {
                   height: 30.0,
                 ),
                 Form(
+                  key: formKey2,
                   child: Column(
                     children: [
                       const Align(
@@ -91,6 +103,13 @@ class SignUpVehicle extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _streetController,
+                          validator: (street) {
+                            if (street == null || street.isEmpty) {
+                              return "Please enter your street";
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const Align(
@@ -129,6 +148,15 @@ class SignUpVehicle extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _cityController,
+                          validator: (city) {
+                            if (city == null || city.isEmpty) {
+                              return "Please enter your city";
+                            } else if (RegExp(r'\d').hasMatch(city)) {
+                              return 'City should not contain numerical values';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const Align(
@@ -167,6 +195,15 @@ class SignUpVehicle extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _provinceController,
+                          validator: (province) {
+                            if (province == null || province.isEmpty) {
+                              return "Please enter your city";
+                            } else if (RegExp(r'\d').hasMatch(province)) {
+                              return 'Province should not contain numerical values';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const Align(
@@ -205,6 +242,15 @@ class SignUpVehicle extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _passwordController,
+                          validator: (password) {
+                            if (password == null || password.isEmpty) {
+                              return "Please enter your password";
+                            } else if (password.length < 9) {
+                              return 'Password shoulde be atleast 8 characters';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const Align(
@@ -243,6 +289,15 @@ class SignUpVehicle extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _confirmPasswordController,
+                          validator: (confirmPassword) {
+                            if (confirmPassword == null ||
+                                confirmPassword.isEmpty) {
+                              return "Please enter your password";
+                            }
+
+                            return null;
+                          },
                         ),
                       ),
                     ],
@@ -256,10 +311,12 @@ class SignUpVehicle extends StatelessWidget {
                     width: 250.0,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomeScreen()));
+                        if (formKey2.currentState!.validate()) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFF7817),

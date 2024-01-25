@@ -1,10 +1,25 @@
 import 'package:carex/signup_vehicle.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   SignUp({super.key});
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
+
+  TextEditingController _firstnameController = TextEditingController();
+
+  TextEditingController _lastnameController = TextEditingController();
+
+  TextEditingController _nicNumberController = TextEditingController();
+
+  TextEditingController _contactNumberController = TextEditingController();
+
+  TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +40,9 @@ class SignUp extends StatelessWidget {
                 alignment: Alignment.topLeft,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Sign Up With",
@@ -52,6 +67,7 @@ class SignUp extends StatelessWidget {
                   height: 30.0,
                 ),
                 Form(
+                  key: formKey1,
                   child: Column(
                     children: [
                       const Align(
@@ -90,6 +106,15 @@ class SignUp extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _firstnameController,
+                          validator: (first_name) {
+                            if (first_name == null || first_name.isEmpty) {
+                              return 'Please enter your name';
+                            } else if (RegExp(r'\d').hasMatch(first_name)) {
+                              return 'User name should not contain numerical values';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const Align(
@@ -128,6 +153,16 @@ class SignUp extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _lastnameController,
+                          validator: (last_name) {
+                            if (last_name == null || last_name.isEmpty) {
+                              return 'Please enter your name';
+                            }
+                            if (RegExp(r'\d').hasMatch(last_name)) {
+                              return 'User name should not contain numerical values';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const Align(
@@ -143,30 +178,36 @@ class SignUp extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
                         child: TextFormField(
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                          decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                10.0,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  10.0,
+                                ),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFFF7817),
+                                ),
                               ),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFFF7817),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  10.0,
+                                ),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFFF7817),
+                                ),
                               ),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                10.0,
-                              ),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFFF7817),
-                              ),
-                            ),
-                          ),
-                        ),
+                            controller: _nicNumberController,
+                            validator: (nic_Num) {
+                              if (nic_Num == null || nic_Num.isEmpty) {
+                                return 'Please enter your name';
+                              }
+                              return null;
+                            }),
                       ),
                       const Align(
                         alignment: Alignment.centerLeft,
@@ -204,6 +245,19 @@ class SignUp extends StatelessWidget {
                               ),
                             ),
                           ),
+                          controller: _contactNumberController,
+                          validator: (contactNo) {
+                            if (contactNo == null || contactNo.isEmpty) {
+                              return 'Please enter your name';
+                            }
+                            if (RegExp(r'[^\d]').hasMatch(contactNo)) {
+                              return 'Contact number should not contain texts';
+                            }
+                            if (contactNo.length != 10) {
+                              return 'Contact number must be 10 digits';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const Align(
@@ -219,30 +273,42 @@ class SignUp extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
                         child: TextFormField(
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                          decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                10.0,
+                            //keyboardType: TextInputType.emailAddress,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  10.0,
+                                ),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFFF7817),
+                                ),
                               ),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFFF7817),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  10.0,
+                                ),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFFF7817),
+                                ),
                               ),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                10.0,
-                              ),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFFF7817),
-                              ),
-                            ),
-                          ),
-                        ),
+                            controller: _emailController,
+                            validator: (emailAdd) {
+                              if (emailAdd == null || emailAdd.isEmpty) {
+                                return 'Please enter your name';
+                              }
+                              if (!RegExp(
+                                      r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                                  .hasMatch(emailAdd)) {
+                                return 'Please enter a valid email address';
+                              }
+                              return null;
+                            }),
                       ),
                     ],
                   ),
@@ -256,10 +322,12 @@ class SignUp extends StatelessWidget {
                     height: 50.0,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpVehicle()));
+                        if (formKey1.currentState!.validate()) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpVehicle()));
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
