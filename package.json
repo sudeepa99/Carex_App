@@ -1,0 +1,32 @@
+{
+  "name": "carex",
+  "version": "1.0.0",
+  "description": "A new Flutter project.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" :"nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudeepa99/Carex_App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudeepa99/Carex_App/issues"
+  },
+  "homepage": "https://github.com/sudeepa99/Carex_App#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
+    "nodemon": "^3.0.3"
+  }
+}
