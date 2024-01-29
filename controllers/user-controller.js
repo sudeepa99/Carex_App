@@ -1,5 +1,6 @@
 import { request } from "express";
 import User from "../models/User.js"
+import bcrypt from "bcryptjs";
 
 export const getAllUsers = async(req, res, next) => {
     let users;
@@ -21,11 +22,11 @@ export const signup = async(req, res, next) => {
     if(!firstName && firstName.trim()==="" && !lastName && lastName.trim()==="" && !nicNumber && nicNumber.trim()==="" && !contactNumber && contactNumber.trim()=== "" && !email && email.trim()==="" && !street && street.trim()==="" && !city && city.trim()==="" && !province && province.trim()==="" && !password && password.trim===""){
         return res.status(422).jason({message: "Invalid Input"});
     }
-
+    const hashedPassword = bcrypt.hashSync(password)
     let user;
 
     try{
-        user = new User({ firstName,lastName,nicNumber,contactNumber,email,street,city,province,password });
+        user = new User({ firstName,lastName,nicNumber,contactNumber,email,street,city,province, password: hashedPassword});
         user = await user.save();
     }
     catch(err){
