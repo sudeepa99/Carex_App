@@ -13,12 +13,12 @@ const userSchema = new Schema({
 
     },
     nicNumber: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
     },
     contactNumber: {
-        type: Number,
+        type: String,
         required: true,
 
     },

@@ -4,8 +4,11 @@ import mongoose from "mongoose";
 import userRouter from "./routes/user-rotes.js";
 const app = express();
 
+
 // middlewares
+app.use(express.json());
 app.use("/user",userRouter);
+
 
 mongoose
 .connect(`mongodb+srv://hashadananjaya7:sabara123@carex.sibjgis.mongodb.net/?retryWrites=true&w=majority`
