@@ -1,4 +1,6 @@
 import 'package:carex/first_page.dart';
+import 'package:carex/home_screen.dart';
+import 'package:carex/mechanic.dart';
 import 'package:carex/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: FirstPage(),
+      home: MechanicPage(),
     );
   }
 }
