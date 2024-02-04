@@ -81,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         TextFormField(
+                          cursorColor: Colors.white,
                           style: const TextStyle(
                             color: Colors.white,
                           ),
