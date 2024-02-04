@@ -102,7 +102,7 @@ class _MyWidgetState extends State<MechanicPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "TOYOTA",
+                              "TOYOTA Vishmi",
                               style: TextStyle(
                                 fontSize: 20.0,
                                 color: Color(0XFFFFFFFF),
