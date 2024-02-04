@@ -82,7 +82,12 @@ flutter:
   - assets/user_photo.png
   - assets/file-Regular (1).png
   - assets/phone-Regular.png
+  - assets/tyre_photo.png
+  - assets/center_photo.png
+  - assets/bodywash_photo.png
   - assets/animations/Animation - 1704549915037.json
+ 
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
