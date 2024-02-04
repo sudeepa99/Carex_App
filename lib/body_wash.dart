@@ -294,7 +294,7 @@ class _MyWidgetState extends State<BodywashPage> {
                         ),
                       ),
                       const SizedBox(
-                        width: 60,
+                        width: 55,
                       ),
                       InkWell(
                         onTap: () {},
