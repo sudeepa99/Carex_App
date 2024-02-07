@@ -2,14 +2,14 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-class MechanicProfile extends StatefulWidget {
-  const MechanicProfile({super.key});
+class ServiceCentreProfile extends StatefulWidget {
+  const ServiceCentreProfile({super.key});
 
   @override
-  State<MechanicProfile> createState() => _MechanicProfileState();
+  State<ServiceCentreProfile> createState() => _MechanicProfileState();
 }
 
-class _MechanicProfileState extends State<MechanicProfile> {
+class _MechanicProfileState extends State<ServiceCentreProfile> {
   String _dropdownvalue = 'Service 1';
   bool _isDropdownOpen = true;
 
@@ -112,11 +112,11 @@ class _MechanicProfileState extends State<MechanicProfile> {
                       height: 20,
                     ),
                     const Text(
-                      "Mechanic Name",
+                      "Service Centre Name",
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     const Text(
-                      "City",
+                      "Address",
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     const SizedBox(
@@ -161,7 +161,7 @@ class _MechanicProfileState extends State<MechanicProfile> {
                                       color: Colors.white)
                                   : const Icon(Icons.keyboard_arrow_down,
                                       color: Colors.white),
-                              iconSize: 25,
+                              iconSize: 30,
                               iconEnabledColor: Colors.white,
                               hint: const SizedBox
                                   .shrink(), // Hide the hint text since we have a label
