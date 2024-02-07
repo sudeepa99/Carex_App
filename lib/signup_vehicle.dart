@@ -328,8 +328,18 @@ class _SignUpVehicleState extends State<SignUpVehicle> {
                                   builder: (context) => const HomeScreen()));
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFF7817),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFFFF7817),
+                        ),
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                            const EdgeInsets.all(10)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                       ),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,

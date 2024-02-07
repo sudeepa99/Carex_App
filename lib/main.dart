@@ -1,6 +1,7 @@
 import 'package:carex/first_page.dart';
 import 'package:carex/home_screen.dart';
 import 'package:carex/mechanic.dart';
+import 'package:carex/mechanic_profile.dart';
 import 'package:carex/signup_page.dart';
 import 'package:carex/center.dart';
 import 'package:carex/tyre_center.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Tyre_centerPage(),
+      home: const MechanicProfile(),
     );
   }
 }

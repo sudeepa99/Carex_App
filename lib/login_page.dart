@@ -302,8 +302,18 @@ class _LoginPageState extends State<LoginPage> {
                                 MaterialPageRoute(
                                     builder: (context) => SignUp()));
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color(0xFFFF7817),
+                            ),
+                            padding: MaterialStateProperty.all<EdgeInsets>(
+                                const EdgeInsets.all(10)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
                           ),
                           child: const Text(
                             "Register",
