@@ -1,3 +1,4 @@
+import 'package:carex/body_wash_profile.dart';
 import 'package:carex/first_page.dart';
 import 'package:carex/home_screen.dart';
 import 'package:carex/mechanic.dart';
@@ -6,6 +7,7 @@ import 'package:carex/service_centre_profile.dart';
 import 'package:carex/signup_page.dart';
 import 'package:carex/center.dart';
 import 'package:carex/tyre_center.dart';
+import 'package:carex/tyre_centre_profile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ServiceCentreProfile(),
+      home: const BodyWashProfile(),
     );
   }
 }
