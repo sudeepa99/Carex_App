@@ -119,20 +119,36 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                       showCupertinoModalPopup(
                         barrierColor: Colors.transparent,
                         context: context,
-                        builder: ((BuildContext context) => SizedBox(
-                              height: 250,
-                              child: CupertinoDatePicker(
-                                backgroundColor: Colors.white,
-                                initialDateTime: dateTime,
-                                onDateTimeChanged: (DateTime newTime) {
-                                  setState(() => dateTime = newTime);
-                                },
-                                use24hFormat: true,
-                                mode: CupertinoDatePickerMode.date,
+                        builder: ((BuildContext context) => CupertinoTheme(
+                              data: const CupertinoThemeData(
+                                textTheme: CupertinoTextThemeData(
+                                    dateTimePickerTextStyle: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                    pickerTextStyle: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    )),
+                              ),
+                              child: SizedBox(
+                                height: 250,
+                                child: CupertinoDatePicker(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 59, 58, 57),
+                                  initialDateTime: dateTime,
+                                  onDateTimeChanged: (DateTime newTime) {
+                                    setState(() => dateTime = newTime);
+                                  },
+                                  use24hFormat: true,
+                                  mode: CupertinoDatePickerMode.date,
+                                ),
                               ),
                             )),
                       );
                     },
+                  ),
+                  const SizedBox(
+                    height: 30,
                   ),
                   CupertinoButton(
                     child: const Text(
@@ -144,20 +160,35 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                     onPressed: () {
                       showCupertinoModalPopup(
                         context: context,
-                        builder: ((BuildContext context) => SizedBox(
-                              height: 250,
-                              child: CupertinoDatePicker(
-                                backgroundColor: Colors.white,
-                                initialDateTime: dateTime,
-                                onDateTimeChanged: (DateTime newTime) {
-                                  setState(() => dateTime = newTime);
-                                },
-                                use24hFormat: true,
-                                mode: CupertinoDatePickerMode.time,
+                        builder: ((BuildContext context) => CupertinoTheme(
+                              data: const CupertinoThemeData(
+                                  textTheme: CupertinoTextThemeData(
+                                      pickerTextStyle: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                      dateTimePickerTextStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ))),
+                              child: SizedBox(
+                                height: 250,
+                                child: CupertinoDatePicker(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 59, 58, 57),
+                                  initialDateTime: dateTime,
+                                  onDateTimeChanged: (DateTime newTime) {
+                                    setState(() => dateTime = newTime);
+                                  },
+                                  use24hFormat: true,
+                                  mode: CupertinoDatePickerMode.time,
+                                ),
                               ),
                             )),
                       );
                     },
+                  ),
+                  const SizedBox(
+                    height: 40,
                   ),
                   const Text(
                     "Quick Note",
@@ -188,7 +219,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               ),
             ),
             const SizedBox(
-              height: 200,
+              height: 160,
             ),
             Center(
               child: SizedBox(
