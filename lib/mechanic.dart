@@ -256,7 +256,7 @@ class _MyWidgetState extends State<MechanicPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
@@ -293,7 +293,7 @@ class _MyWidgetState extends State<MechanicPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 60,
                       ),
                       InkWell(
@@ -303,7 +303,7 @@ class _MyWidgetState extends State<MechanicPage> {
                             color: const Color(0xFFFF7817),
                             child: Image.asset("assets/file-Regular (1).png")),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       InkWell(

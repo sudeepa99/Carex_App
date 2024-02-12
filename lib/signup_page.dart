@@ -2,7 +2,7 @@ import 'package:carex/signup_vehicle.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
-  SignUp({super.key});
+  const SignUp({super.key});
 
   @override
   State<SignUp> createState() => _SignUpState();

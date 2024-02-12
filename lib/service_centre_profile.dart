@@ -161,7 +161,7 @@ class _MechanicProfileState extends State<ServiceCentreProfile> {
                                       color: Colors.white)
                                   : const Icon(Icons.keyboard_arrow_down,
                                       color: Colors.white),
-                              iconSize: 30,
+                              iconSize: 25,
                               iconEnabledColor: Colors.white,
                               hint: const SizedBox
                                   .shrink(), // Hide the hint text since we have a label
