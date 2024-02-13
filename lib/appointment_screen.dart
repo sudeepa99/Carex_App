@@ -1,3 +1,4 @@
+import 'package:carex/appointment_screen_confirmation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -225,7 +226,13 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               child: SizedBox(
                 width: 270.0,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const DialogBox();
+                        });
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                       const Color(0xFFFF7817),
