@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class CenterPage extends StatefulWidget {
-  CenterPage({Key? key}) : super(key: key);
+  const CenterPage({Key? key}) : super(key: key);
 
   @override
   State<CenterPage> createState() => _MyWidgetState();

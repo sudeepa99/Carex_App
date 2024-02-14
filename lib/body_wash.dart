@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class BodywashPage extends StatefulWidget {
-  BodywashPage({Key? key}) : super(key: key);
+  const BodywashPage({Key? key}) : super(key: key);
 
   @override
   State<BodywashPage> createState() => _MyWidgetState();

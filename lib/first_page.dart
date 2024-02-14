@@ -15,7 +15,7 @@ class _FirstPageState extends State<FirstPage> {
     Future.delayed(const Duration(seconds: 10)).then((value) => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => LoginPage(),
+          builder: (context) => const LoginPage(),
         )));
     super.initState();
   }
