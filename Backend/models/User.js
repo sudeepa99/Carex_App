@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -50,12 +51,12 @@ const userSchema = new mongoose.Schema(
     },
 
    
-    //role: {
-      //type: String,
-      //default: "user",
-    //},
+    role: {
+    type: String,
+    default: "user",
+    },
   },
-  //{ timestamps: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("User", userSchema);
