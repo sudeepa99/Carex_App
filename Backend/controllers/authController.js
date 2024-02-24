@@ -1,5 +1,5 @@
-import User from "../models/User.js";
 
+import User from "../models/User.js";
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
@@ -67,9 +67,9 @@ export const login=async(req,res)=>{
       })
       .status(200).json({
         token,
-      // success:true,message:"successfully login",
-    data:{...rest},
-    role,
+      success:true,message:"successfully login",
+      data:{...rest},
+      role,
 
     });
 
