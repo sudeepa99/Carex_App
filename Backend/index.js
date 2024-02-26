@@ -32,7 +32,7 @@ const connect = async () => {
 
 //for testing
 app.get("/",(req,res)=>{
- res.send("api is working. This this vehicle breakdown help app. I work with backend of this project. Nowadays codinggg....");
+ res.send("api is working. This this vehicle breakdown help app. I work with backend of this project. Nowadays codinggg....amanda");
 });
 
 
