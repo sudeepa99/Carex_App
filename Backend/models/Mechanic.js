@@ -2,35 +2,43 @@ import mongoose from "mongoose";
 
 const mechanicSchema = new mongoose.Schema(
   {
-    
-    userEmail: {
+
+    photo: {
       type: String,
     },
     
-    fullName: {
+    userName: {
       type: String,
       required: true,
     },
 
-    desc: {
-        type: String,
-        required: true,
-      },
-   
+    from: {
+      type: String,
+      required: true,
+    },
+
+    appoinment: {
+      type: String,
+      required: true,
+    },
+
+    
    phone:{
     type:Number,
     required:true,
    },
 
-   appoinment: {
-    type: String,
+   /*maxGroupSize: {
+    type: Number,
     required: true,
-  },
+  },*/
 
-  vehicle: {
-    type: String,
-    required: true,
-  },
+   
+  
+
+  
+
+
    
    },
   
