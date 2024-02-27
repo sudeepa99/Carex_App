@@ -5,6 +5,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.js";
 import authRoute from "./routes/auth.js";
+import mechanicRoute from "./routes/mechanic.js";
+import centreRoute from "./routes/centre.js";
+import body_washRoute from "./routes/body_wash.js";
+import tyre_martRoute from "./routes/tyre_mart.js";
 
 
 
@@ -47,6 +51,11 @@ app.use(cookieParser());
 app.use("/api/v1/auth", authRoute);
 
 app.use("/api/v1/users", userRoute);
+
+app.use("/api/v1/mechanics", mechanicRoute);
+app.use("/api/v1/centres", centreRoute);
+app.use("/api/v1/body_washes", body_washRoute);
+app.use("/api/v1/tyre_marts", tyre_martRoute);
 
 
 
