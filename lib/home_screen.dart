@@ -1,3 +1,8 @@
+import 'package:carex/body_wash.dart';
+import 'package:carex/center.dart';
+import 'package:carex/mechanic.dart';
+import 'package:carex/profile_screen.dart';
+import 'package:carex/tyre_center.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,40 +19,99 @@ class _HomeScreenState extends State<HomeScreen> {
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.shifting,
-            onTap: (index) {
-              setState(() {
-                myIndex = index;
-              });
-            },
-            currentIndex: myIndex,
-            items: [
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/chat.png"),
-                label: 'CHAT',
-                backgroundColor: const Color(0XFF22252B),
+          type: BottomNavigationBarType.shifting,
+          onTap: (index) {
+            setState(() {
+              myIndex = index;
+            });
+          },
+          currentIndex: myIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: IconButton(
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => ChatScreen()));
+                },
+                icon: Image.asset(
+                  "assets/chat.png",
+                  color: myIndex == 0
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
               ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/mechanic.png"),
-                label: 'MECHANIC',
-                backgroundColor: const Color(0XFF22252B),
+              label: 'CHAT',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MechanicPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/mechanic.png",
+                    color: myIndex == 1
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
+              label: 'MECHANIC',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
+                  icon: Image.asset(
+                    "assets/home.png",
+                    color: myIndex == 2
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
+              label: 'HOME',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CenterPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/centers.png",
+                    color: myIndex == 3
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
+              label: 'CENTERS',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                },
+                icon: Image.asset(
+                  "assets/profile.png",
+                  color: myIndex == 4
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
               ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/home.png"),
-                label: 'HOME',
-                backgroundColor: const Color(0XFF22252B),
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/centers.png"),
-                label: 'CENTERS',
-                backgroundColor: const Color(0XFF22252B),
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/profile.png"),
-                label: 'PROFILE',
-                backgroundColor: const Color(0XFF22252B),
-              ),
-            ]),
+              label: 'PROFILE',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.fromLTRB(20.0, 80.0, 20.0, 0.0),
@@ -167,7 +231,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MechanicPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),
@@ -209,7 +278,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CenterPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),
@@ -254,7 +329,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const BodywashPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),
@@ -294,7 +375,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Tyre_centerPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),

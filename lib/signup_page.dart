@@ -204,7 +204,7 @@ class _SignUpState extends State<SignUp> {
                             controller: _nicNumberController,
                             validator: (nic_Num) {
                               if (nic_Num == null || nic_Num.isEmpty) {
-                                return 'Please enter your name';
+                                return 'Please enter your NIC number';
                               }
                               return null;
                             }),
@@ -248,7 +248,7 @@ class _SignUpState extends State<SignUp> {
                           controller: _contactNumberController,
                           validator: (contactNo) {
                             if (contactNo == null || contactNo.isEmpty) {
-                              return 'Please enter your name';
+                              return 'Please enter your contact number';
                             }
                             if (RegExp(r'[^\d]').hasMatch(contactNo)) {
                               return 'Contact number should not contain texts';
@@ -300,7 +300,7 @@ class _SignUpState extends State<SignUp> {
                             controller: _emailController,
                             validator: (emailAdd) {
                               if (emailAdd == null || emailAdd.isEmpty) {
-                                return 'Please enter your name';
+                                return 'Please enter your email address';
                               }
                               if (!RegExp(
                                       r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
@@ -326,7 +326,7 @@ class _SignUpState extends State<SignUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignUpVehicle()));
+                                  builder: (context) => const SignUpVehicle()));
                         }
                       },
                       style: ElevatedButton.styleFrom(
