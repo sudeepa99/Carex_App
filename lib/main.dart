@@ -10,6 +10,7 @@ import 'package:carex/signup_page.dart';
 import 'package:carex/center.dart';
 import 'package:carex/tyre_center.dart';
 import 'package:carex/tyre_centre_profile.dart';
+import 'package:carex/user_profile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProfileScreen(),
+      home: const UserProfile(),
     );
   }
 }
