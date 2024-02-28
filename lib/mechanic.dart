@@ -1,5 +1,8 @@
 //import 'package:carex/user_details.dart';
 
+import 'package:carex/center.dart';
+import 'package:carex/home_screen.dart';
+import 'package:carex/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MechanicPage extends StatefulWidget {
@@ -25,27 +28,85 @@ class _MyWidgetState extends State<MechanicPage> {
           currentIndex: myIndex,
           items: [
             BottomNavigationBarItem(
-              icon: Image.asset("assets/chat.png"),
+              icon: IconButton(
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => ChatScreen()));
+                },
+                icon: Image.asset(
+                  "assets/chat.png",
+                  color: myIndex == 0
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
+              ),
               label: 'CHAT',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/mechanic.png"),
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MechanicPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/mechanic.png",
+                    color: myIndex == 1
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
               label: 'MECHANIC',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/home.png"),
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
+                  icon: Image.asset(
+                    "assets/home.png",
+                    color: myIndex == 2
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
               label: 'HOME',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/centers.png"),
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CenterPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/centers.png",
+                    color: myIndex == 3
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
               label: 'CENTERS',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/profile.png"),
+              icon: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                },
+                icon: Image.asset(
+                  "assets/profile.png",
+                  color: myIndex == 4
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
+              ),
               label: 'PROFILE',
               backgroundColor: const Color(0XFF22252B),
             ),

@@ -295,12 +295,15 @@ class _LoginPageState extends State<LoginPage> {
                             color: Color.fromRGBO(255, 244, 247, 1),
                           ),
                         ),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         ElevatedButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SignUp()));
+                                    builder: (context) => const SignUp()));
                           },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -318,9 +321,9 @@ class _LoginPageState extends State<LoginPage> {
                           child: const Text(
                             "Register",
                             style: TextStyle(
-                                fontSize: 18.0,
-                                color: Color(0xFFFF7817),
-                                decoration: TextDecoration.overline),
+                              fontSize: 18.0,
+                              color: Color.fromRGBO(255, 244, 247, 1),
+                            ),
                           ),
                         ),
                       ],
