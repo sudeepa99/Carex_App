@@ -14,6 +14,18 @@ class CenterPage extends StatefulWidget {
 
 class _MyWidgetState extends State<CenterPage> {
   int myIndex = 0;
+  String _dropdownvalue = 'Prius';
+  bool _isDropdownOpen = true;
+
+  List<String> listItem = [
+    'Prius',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -157,23 +169,49 @@ class _MyWidgetState extends State<CenterPage> {
                         padding: const EdgeInsets.only(left: 30.0),
                         child: Image.asset("assets/vertical-line.png"),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 25.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "TOYOTA",
                               style: TextStyle(
                                 fontSize: 20.0,
                                 color: Color(0XFFFFFFFF),
                               ),
                             ),
-                            Text(
-                              "Prius",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Color(0XFFFFFFFF),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _isDropdownOpen = !_isDropdownOpen;
+                                });
+                              },
+
+                              // Adjust the spacing between label and dropdown icon
+                              child: DropdownButton(
+                                dropdownColor: const Color(0XFF22252B),
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 16),
+
+                                underline: Container(),
+                                icon: const Icon(Icons.keyboard_arrow_up,
+                                    color: Colors.white),
+                                iconSize: 25,
+                                iconEnabledColor: Colors.white,
+                                // Hide the hint text since we have a label
+                                value: _dropdownvalue,
+                                items: listItem.map((value1) {
+                                  return DropdownMenuItem(
+                                    value: value1,
+                                    child: Text(value1),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    _dropdownvalue = newValue!;
+                                  });
+                                },
                               ),
                             ),
                           ],
