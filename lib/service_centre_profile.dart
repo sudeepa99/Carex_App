@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:carex/center.dart';
 import 'package:flutter/material.dart';
 
 class ServiceCentreProfile extends StatefulWidget {
@@ -38,12 +39,28 @@ class _MechanicProfileState extends State<ServiceCentreProfile> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 0.0),
           color: const Color(0XFF22252B),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: ListView(
             children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 340, bottom: 10),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CenterPage()));
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_sharp,
+                      color: Colors.white,
+                      size: 35,
+                      weight: 10,
+                    )),
+              ),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(

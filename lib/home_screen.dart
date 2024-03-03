@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(20.0, 80.0, 20.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(20.0, 90.0, 20.0, 0.0),
             color: const Color(0XFF22252B),
             height: MediaQuery.of(context).size.height,
             child: Column(
