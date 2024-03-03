@@ -1,4 +1,5 @@
 import 'package:carex/appointment_screen.dart';
+import 'package:carex/appointment_screen_confirmation.dart';
 import 'package:carex/body_wash_profile.dart';
 import 'package:carex/first_page.dart';
 import 'package:carex/home_screen.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MechanicPage(),
+      home: const AppointmentScreen(),
     );
   }
 }

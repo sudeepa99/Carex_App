@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:carex/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class DialogBox extends StatefulWidget {
@@ -59,7 +60,12 @@ class _DialogBoxState extends State<DialogBox> {
                     SizedBox(
                       width: 230,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
+                          },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
                               const Color(0xFFFF7817),
