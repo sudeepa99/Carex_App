@@ -3,10 +3,10 @@ import {
   //createCentre,
   //updateCentre,
   //deleteCentre,
-  //getSingleCentre,
-  //getAllCentre,
+  getSingleCentre,
+  getAllCentre,
   getCentreBysearch,
-  //getFeaturedCentre,
+  getOnlineCentre,
   //getCentreCount,
 } from "./../controllers/centreController.js";
 //import { verifyAdmin } from "../utils/verifyToken.js";
@@ -21,17 +21,17 @@ const router = express.Router();
 
 //router.delete("/:id", verifyAdmin, deleteCentre);
 
-// //getSingle centre 
-//router.get("/:id", getSingleCentre);
+//getSingle centre 
+router.get("/:id", getSingleCentre);
 
 // //getAll centre 
-//router.get("/", getAllCentre);
+router.get("/", getAllCentre);
 
 //get centre  by search
 router.get("/search/getCentreBySearch", getCentreBysearch);
 
-// //get centre  by search
-//router.get("/search/getFeaturedCentre", getFeaturedCentre);
+ //get online centre  by search
+router.get("/search/getOnlineCentre", getOnlineCentre);
 // //get centre  by search
 //router.get("/search/getCentreCount", getCentreCount);
 
