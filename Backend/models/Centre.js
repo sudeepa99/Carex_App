@@ -6,7 +6,7 @@ const centreSchema = new mongoose.Schema(
       type: String,
     },
     
-    userName: {
+    fullName: {
       type: String,
       required: true,
     },
@@ -18,7 +18,7 @@ const centreSchema = new mongoose.Schema(
 
     appoinment: {
       type: String,
-      required: true,
+      //required: true,
     },
 
     
@@ -26,6 +26,11 @@ const centreSchema = new mongoose.Schema(
     type:Number,
     required:true,
    },
+
+   online: {
+    type: Boolean,
+    default: false,
+  },
       
   },
   { timestamps: true }
