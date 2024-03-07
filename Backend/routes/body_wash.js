@@ -3,10 +3,10 @@ import {
   //createBodyWash,
   //updateBodyWash,
   //deleteBodyWash,
-  //getSingleBodyWash,
-  //getAllBodyWash,
+  getSingleBodyWash,
+  getAllBodyWash,
   getBody_washBysearch,
-  //getFeaturedBodyWash,
+  getOnlineBodyWash,
   //getBodyWashCount,
 } from "./../controllers/body_washController.js";
 //import { verifyAdmin } from "../utils/verifyToken.js";
@@ -21,17 +21,17 @@ const router = express.Router();
 
 //router.delete("/:id", verifyAdmin, deleteBodyWash);
 
-// //getSinglebody_wash
-//router.get("/:id", getSingleBodyWash);
+//getSinglebody_wash
+router.get("/:id", getSingleBodyWash);
 
-// //getAllbody_wash
-//router.get("/", getAllBodyWash);
+ //getAllbody_wash
+router.get("/", getAllBodyWash);
 
 //get body_wash by search
 router.get("/search/getBody_washBySearch", getBody_washBysearch);
 
-// //get body_wash by search
-//router.get("/search/getFeaturedBodyWash", getFeaturedBodyWash);
+ //get online body_wash by search
+router.get("/search/getOnlineBodyWash", getOnlineBodyWash);
 // //get body_wash by search
 //router.get("/search/getBodyWashCount", getBodyWashCount);
 
