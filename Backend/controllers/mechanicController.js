@@ -17,6 +17,48 @@ import Mechanic from "../models/Mechanic.js";
     }
   };*/
 
+  //getSingleMechanic
+export const getSingleMechanic = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const mechanic = await Mechanic.findById(id);
+    res.status(200).json({
+      success: true,
+      message: "Successfully",
+      data: mechanic,
+    });
+  } catch (err) {
+    res.status(404).json({ success: false, message: "Not found" });
+  }
+};
+
+
+
+
+ 
+ 
+ 
+  //getAllMechanics
+export const getAllMechanics = async (req, res) => {
+  //for pagination
+  const page = parseInt(req.query.page);
+  console.log(page);
+  try {
+    const mechanics = await Mechanic.find({})
+      //.populate("reviews")
+      .skip(page * 8)
+      .limit(8);
+    res.status(200).json({
+      success: true,
+      count: mechanics.length,
+      message: "Successfully",
+      data: mechanics,
+    });
+  } catch (err) {
+    res.status(404).json({ success: false, message: "Not found" });
+  }
+};
+
 
 
 
@@ -27,16 +69,16 @@ import Mechanic from "../models/Mechanic.js";
 //get mechanic by search
 export const getMechanicBysearch = async (req, res) => {
     //here i means case sensitive
-    const userName = new RegExp(req.query.use, "i");
+    const fullName = new RegExp(req.query.use, "i");
     const from =new RegExp(req.query.use, "i");
     //const distance = parseInt(req.query.distance);
     //const maxGroupSize = parseInt(req.query.maxGroupSize);
     try {
       //get means greater than equal
       const mechanic = await Mechanic.find({
-        userName,
+        fullName,
         from,
-        //maxGroupSize: { $gte: maxGroupSize },
+       
       });
       res.status(200).json({
         success: true,
@@ -48,3 +90,20 @@ export const getMechanicBysearch = async (req, res) => {
       res.status(404).json({ success: false, message: "Not found" });
     }
   };
+
+  //get online mechanic
+export const getOnlineMechanic = async (req, res) => {
+  try {
+    const mechanics = await Mechanic.find({ online: true })
+     
+      .limit(8);
+      res.status(200).json({
+      success: true,
+      count: mechanics.length,
+      message: "Successfully",
+      data: mechanics,
+    });
+  } catch (err) {
+    res.status(404).json({ success: false, message: "Not found" });
+  }
+};
