@@ -3,10 +3,10 @@ import {
   //createTyreMart,
   //updateTyreMart,
   //deleteTyreMart,
-  //getSingleTyreMart,
-  //getAllTyreMart,
+  getSingleTyreMart,
+  getAllTyreMart,
   getTyre_martBysearch,
-  //getFeaturedTyreMart,
+  getOnlineTyreMart,
   //getTyreMartCount,
 } from "./../controllers/tyre_martController.js";
 //import { verifyAdmin } from "../utils/verifyToken.js";
@@ -21,17 +21,17 @@ const router = express.Router();
 
 //router.delete("/:id", verifyAdmin, deleteTyreMart);
 
-// //getSingle tyre mart   
-//router.get("/:id", getSingleTyreMart);
+//getSingle tyre mart   
+router.get("/:id", getSingleTyreMart);
 
 // //getAll tyre mart  
-//router.get("/", getAllTyreMart);
+router.get("/", getAllTyreMart);
 
 //get tyre mart   by search
 router.get("/search/getTyre_martBySearch", getTyre_martBysearch);
 
-// //get tyre mart   by search
-//router.get("/search/getFeaturedTyreMart", getFeaturedTyreMart);
+//get online tyre mart   by search
+router.get("/search/getOnlineTyreMart", getOnlineTyreMart);
 // //get tyre mart   by search
 //router.get("/search/getTyreMartCount", getTyreMartCount);
 
