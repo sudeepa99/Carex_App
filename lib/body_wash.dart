@@ -1,5 +1,9 @@
 //import 'package:carex/user_details.dart';
 
+import 'package:carex/center.dart';
+import 'package:carex/home_screen.dart';
+import 'package:carex/mechanic.dart';
+import 'package:carex/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class BodywashPage extends StatefulWidget {
@@ -11,6 +15,18 @@ class BodywashPage extends StatefulWidget {
 
 class _MyWidgetState extends State<BodywashPage> {
   int myIndex = 0;
+  String _dropdownvalue = 'Prius';
+  bool _isDropdownOpen = true;
+
+  List<String> listItem = [
+    'Prius',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,27 +41,85 @@ class _MyWidgetState extends State<BodywashPage> {
           currentIndex: myIndex,
           items: [
             BottomNavigationBarItem(
-              icon: Image.asset("assets/chat.png"),
+              icon: IconButton(
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => ChatScreen()));
+                },
+                icon: Image.asset(
+                  "assets/chat.png",
+                  color: myIndex == 0
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
+              ),
               label: 'CHAT',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/mechanic.png"),
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MechanicPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/mechanic.png",
+                    color: myIndex == 1
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
               label: 'MECHANIC',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/home.png"),
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
+                  icon: Image.asset(
+                    "assets/home.png",
+                    color: myIndex == 2
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
               label: 'HOME',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/centers.png"),
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CenterPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/centers.png",
+                    color: myIndex == 3
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
               label: 'CENTERS',
               backgroundColor: const Color(0XFF22252B),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset("assets/profile.png"),
+              icon: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                },
+                icon: Image.asset(
+                  "assets/profile.png",
+                  color: myIndex == 4
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
+              ),
               label: 'PROFILE',
               backgroundColor: const Color(0XFF22252B),
             ),
@@ -53,12 +127,28 @@ class _MyWidgetState extends State<BodywashPage> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 0.0),
             color: const Color(0XFF22252B),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: ListView(
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 340, bottom: 20),
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back_sharp,
+                        color: Colors.white,
+                        size: 35,
+                        weight: 10,
+                      )),
+                ),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -96,23 +186,49 @@ class _MyWidgetState extends State<BodywashPage> {
                         padding: const EdgeInsets.only(left: 30.0),
                         child: Image.asset("assets/vertical-line.png"),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 25.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "TOYOTA",
                               style: TextStyle(
                                 fontSize: 20.0,
                                 color: Color(0XFFFFFFFF),
                               ),
                             ),
-                            Text(
-                              "Prius",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Color(0XFFFFFFFF),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _isDropdownOpen = !_isDropdownOpen;
+                                });
+                              },
+
+                              // Adjust the spacing between label and dropdown icon
+                              child: DropdownButton(
+                                dropdownColor: const Color(0XFF22252B),
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 16),
+
+                                underline: Container(),
+                                icon: const Icon(Icons.keyboard_arrow_up,
+                                    color: Colors.white),
+                                iconSize: 25,
+                                iconEnabledColor: Colors.white,
+                                // Hide the hint text since we have a label
+                                value: _dropdownvalue,
+                                items: listItem.map((value1) {
+                                  return DropdownMenuItem(
+                                    value: value1,
+                                    child: Text(value1),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    _dropdownvalue = newValue!;
+                                  });
+                                },
                               ),
                             ),
                           ],
@@ -260,7 +376,7 @@ class _MyWidgetState extends State<BodywashPage> {
                   height: 15,
                 ),
                 Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(7),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: const Color(0xFFFF7817),

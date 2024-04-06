@@ -1,3 +1,8 @@
+import 'package:carex/body_wash.dart';
+import 'package:carex/center.dart';
+import 'package:carex/mechanic.dart';
+import 'package:carex/profile_screen.dart';
+import 'package:carex/tyre_center.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,48 +14,118 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int myIndex = 0;
+  String _dropdownvalue = 'Prius';
+  bool _isDropdownOpen = true;
+
+  List<String> listItem = [
+    'Prius',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6'
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.shifting,
-            onTap: (index) {
-              setState(() {
-                myIndex = index;
-              });
-            },
-            currentIndex: myIndex,
-            items: [
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/chat.png"),
-                label: 'CHAT',
-                backgroundColor: const Color(0XFF22252B),
+          type: BottomNavigationBarType.shifting,
+          onTap: (index) {
+            setState(() {
+              myIndex = index;
+            });
+          },
+          currentIndex: myIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: IconButton(
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => ChatScreen()));
+                },
+                icon: Image.asset(
+                  "assets/chat.png",
+                  color: myIndex == 0
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
               ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/mechanic.png"),
-                label: 'MECHANIC',
-                backgroundColor: const Color(0XFF22252B),
+              label: 'CHAT',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MechanicPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/mechanic.png",
+                    color: myIndex == 1
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
+              label: 'MECHANIC',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
+                  icon: Image.asset(
+                    "assets/home.png",
+                    color: myIndex == 2
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
+              label: 'HOME',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CenterPage()));
+                  },
+                  icon: Image.asset(
+                    "assets/centers.png",
+                    color: myIndex == 3
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  )),
+              label: 'CENTERS',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+            BottomNavigationBarItem(
+              icon: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                },
+                icon: Image.asset(
+                  "assets/profile.png",
+                  color: myIndex == 4
+                      ? const Color(0XFFFFFFFF)
+                      : const Color(0xFFFF7817),
+                ),
               ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/home.png"),
-                label: 'HOME',
-                backgroundColor: const Color(0XFF22252B),
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/centers.png"),
-                label: 'CENTERS',
-                backgroundColor: const Color(0XFF22252B),
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset("assets/profile.png"),
-                label: 'PROFILE',
-                backgroundColor: const Color(0XFF22252B),
-              ),
-            ]),
+              label: 'PROFILE',
+              backgroundColor: const Color(0XFF22252B),
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(20.0, 80.0, 20.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(20.0, 90.0, 20.0, 0.0),
             color: const Color(0XFF22252B),
             height: MediaQuery.of(context).size.height,
             child: Column(
@@ -93,23 +168,49 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.only(left: 30.0),
                         child: Image.asset("assets/vertical-line.png"),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 25.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "TOYOTA",
                               style: TextStyle(
                                 fontSize: 20.0,
                                 color: Color(0XFFFFFFFF),
                               ),
                             ),
-                            Text(
-                              "Prius",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Color(0XFFFFFFFF),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _isDropdownOpen = !_isDropdownOpen;
+                                });
+                              },
+
+                              // Adjust the spacing between label and dropdown icon
+                              child: DropdownButton(
+                                dropdownColor: const Color(0XFF22252B),
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 16),
+
+                                underline: Container(),
+                                icon: const Icon(Icons.keyboard_arrow_up,
+                                    color: Colors.white),
+                                iconSize: 25,
+                                iconEnabledColor: Colors.white,
+                                // Hide the hint text since we have a label
+                                value: _dropdownvalue,
+                                items: listItem.map((value1) {
+                                  return DropdownMenuItem(
+                                    value: value1,
+                                    child: Text(value1),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    _dropdownvalue = newValue!;
+                                  });
+                                },
                               ),
                             ),
                           ],
@@ -167,7 +268,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MechanicPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),
@@ -209,7 +315,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CenterPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),
@@ -254,7 +366,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const BodywashPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),
@@ -294,7 +412,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 180.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Tyre_centerPage()));
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0XFF22252B)),

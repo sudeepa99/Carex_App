@@ -1,3 +1,4 @@
+import 'package:carex/tyre_center.dart';
 import 'package:flutter/material.dart';
 
 class TyreCentreProfile extends StatefulWidget {
@@ -10,6 +11,17 @@ class TyreCentreProfile extends StatefulWidget {
 class _MechanicProfileState extends State<TyreCentreProfile> {
   String _dropdownvalue = 'Service 1';
   bool _isDropdownOpen = true;
+  String _dropdownvalue2 = 'Prius';
+  bool _isDropdownOpen2 = true;
+
+  List<String> listItem2 = [
+    'Prius',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6'
+  ];
 
   List<String> listItem = [
     'Service 1',
@@ -25,12 +37,28 @@ class _MechanicProfileState extends State<TyreCentreProfile> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 0.0),
           color: const Color(0XFF22252B),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: ListView(
             children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 340, bottom: 10),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Tyre_centerPage()));
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_sharp,
+                      color: Colors.white,
+                      size: 35,
+                      weight: 10,
+                    )),
+              ),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -68,23 +96,53 @@ class _MechanicProfileState extends State<TyreCentreProfile> {
                       padding: const EdgeInsets.only(left: 30.0),
                       child: Image.asset("assets/vertical-line.png"),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 25.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "TOYOTA",
                             style: TextStyle(
                               fontSize: 20.0,
                               color: Color(0XFFFFFFFF),
                             ),
                           ),
-                          Text(
-                            "Prius",
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              color: Color(0XFFFFFFFF),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _isDropdownOpen2 = !_isDropdownOpen2;
+                              });
+                            },
+
+                            // Adjust the spacing between label and dropdown icon
+                            child: DropdownButton(
+                              dropdownColor: const Color(0XFF22252B),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 16),
+
+                              underline: Container(),
+                              icon: _isDropdownOpen2
+                                  ? const Icon(Icons.keyboard_arrow_up,
+                                      color: Colors.white)
+                                  : const Icon(Icons.keyboard_arrow_down,
+                                      color: Colors.white),
+                              iconSize: 25,
+                              iconEnabledColor: Colors.white,
+                              hint: const SizedBox
+                                  .shrink(), // Hide the hint text since we have a label
+                              value: _dropdownvalue2,
+                              items: listItem2.map((value1) {
+                                return DropdownMenuItem(
+                                  value: value1,
+                                  child: Text(value1),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  _dropdownvalue2 = newValue!;
+                                });
+                              },
                             ),
                           ),
                         ],

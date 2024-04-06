@@ -1,3 +1,6 @@
+import 'package:carex/center.dart';
+import 'package:carex/home_screen.dart';
+import 'package:carex/mechanic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,281 +27,337 @@ class _ProfileScreenState extends State<ProfileScreen> {
             currentIndex: myIndex,
             items: [
               BottomNavigationBarItem(
-                icon: Image.asset("assets/chat.png"),
+                icon: IconButton(
+                  onPressed: () {
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => ChatScreen()));
+                  },
+                  icon: Image.asset(
+                    "assets/chat.png",
+                    color: myIndex == 0
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  ),
+                ),
                 label: 'CHAT',
                 backgroundColor: const Color(0XFF22252B),
               ),
               BottomNavigationBarItem(
-                icon: Image.asset("assets/mechanic.png"),
+                icon: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MechanicPage()));
+                    },
+                    icon: Image.asset(
+                      "assets/mechanic.png",
+                      color: myIndex == 1
+                          ? const Color(0XFFFFFFFF)
+                          : const Color(0xFFFF7817),
+                    )),
                 label: 'MECHANIC',
                 backgroundColor: const Color(0XFF22252B),
               ),
               BottomNavigationBarItem(
-                icon: Image.asset("assets/home.png"),
+                icon: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
+                    },
+                    icon: Image.asset(
+                      "assets/home.png",
+                      color: myIndex == 2
+                          ? const Color(0XFFFFFFFF)
+                          : const Color(0xFFFF7817),
+                    )),
                 label: 'HOME',
                 backgroundColor: const Color(0XFF22252B),
               ),
               BottomNavigationBarItem(
-                icon: Image.asset("assets/centers.png"),
+                icon: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CenterPage()));
+                    },
+                    icon: Image.asset(
+                      "assets/centers.png",
+                      color: myIndex == 3
+                          ? const Color(0XFFFFFFFF)
+                          : const Color(0xFFFF7817),
+                    )),
                 label: 'CENTERS',
                 backgroundColor: const Color(0XFF22252B),
               ),
               BottomNavigationBarItem(
-                icon: Image.asset("assets/profile.png"),
+                icon: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()));
+                  },
+                  icon: Image.asset(
+                    "assets/profile.png",
+                    color: myIndex == 4
+                        ? const Color(0XFFFFFFFF)
+                        : const Color(0xFFFF7817),
+                  ),
+                ),
                 label: 'PROFILE',
                 backgroundColor: const Color(0XFF22252B),
               ),
             ]),
-        body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-            color: const Color(0XFF22252B),
-            child: ListView(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFFFF7817),
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(40.5),
+        body: Container(
+          //height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          padding: const EdgeInsets.fromLTRB(20.0, 90.0, 20.0, 0.0),
+          color: const Color(0XFF22252B),
+          child: ListView(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xFFFF7817),
+                    width: 2.0,
                   ),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/user.png"),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 22.0),
-                        child: Column(
+                  borderRadius: BorderRadius.circular(40.5),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset("assets/user.png"),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 22.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "USER NAME",
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Color(0XFFFFFFFF),
+                            ),
+                          ),
+                          Text(
+                            "Current Location",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Color(0XFFFFFFFF),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 65,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "Edit",
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "My Vehicles",
+                style: TextStyle(fontSize: 22, color: Colors.white),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 170,
+                      height: 160,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: const Color(0XFF302E41),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: const Color(0xFFFF7817),
+                          )),
+                      child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "USER NAME",
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                color: Color(0XFFFFFFFF),
-                              ),
-                            ),
-                            Text(
-                              "Current Location",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Color(0XFFFFFFFF),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 65,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Edit",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  "My Vehicles",
-                  style: TextStyle(fontSize: 22, color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 170,
-                        height: 160,
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: const Color(0XFF302E41),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: const Color(0xFFFF7817),
-                            )),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  const Text(
-                                    "TOYOTA",
-                                    style: TextStyle(
-                                        fontSize: 22, color: Colors.white),
-                                  ),
-                                  const SizedBox(
-                                    width: 16,
-                                  ),
-                                  IconButton(
-                                    onPressed: () {},
-                                    hoverColor: const Color(0xFFFF7817),
-                                    icon: const Icon(Icons.delete),
-                                    color: Colors.white,
-                                  )
-                                ],
-                              ),
-                              Text(
-                                "Prius",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(0.6),
+                            Row(
+                              children: [
+                                const Text(
+                                  "TOYOTA",
+                                  style: TextStyle(
+                                      fontSize: 22, color: Colors.white),
                                 ),
-                                //textAlign: TextAlign.left,
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                "CAR 8627",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(0.7),
+                                const SizedBox(
+                                  width: 16,
                                 ),
-                              )
-                            ]),
-                      ),
-                      const SizedBox(
-                        width: 25,
-                      ),
-                      Container(
-                        width: 170,
-                        height: 160,
-                        padding: const EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                            color: const Color(0XFF302E41),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: const Color(0xFFFF7817),
-                            )),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon:
-                                  const Icon(Icons.add_circle_outline_rounded),
-                              color: Colors.white,
-                              iconSize: 30,
+                                IconButton(
+                                  onPressed: () {},
+                                  hoverColor: const Color(0xFFFF7817),
+                                  icon: const Icon(Icons.delete),
+                                  color: Colors.white,
+                                )
+                              ],
                             ),
-                            const Text(
-                              "Add new",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
+                            Text(
+                              "Prius",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white.withOpacity(0.6),
+                              ),
+                              //textAlign: TextAlign.left,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "CAR 8627",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white.withOpacity(0.7),
+                              ),
                             )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  "My Appointments - Active",
-                  style: TextStyle(fontSize: 22, color: Colors.white),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  width: 300,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: const Color(0XFF302E41),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: const Color(0xFFFF7817),
-                      )),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Appointed Center Name 24/02/2024 08:30",
-                        style: TextStyle(
-                            color: Colors.white, height: 2, fontSize: 16),
+                          ]),
+                    ),
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    Container(
+                      width: 170,
+                      height: 160,
+                      padding: const EdgeInsets.all(0),
+                      decoration: BoxDecoration(
+                          color: const Color(0XFF302E41),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: const Color(0xFFFF7817),
+                          )),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.add_circle_outline_rounded),
+                            color: Colors.white,
+                            iconSize: 30,
+                          ),
+                          const Text(
+                            "Add new",
+                            style: TextStyle(fontSize: 18, color: Colors.white),
+                          )
+                        ],
                       ),
-                      Text(
-                        "Appointed Center Name 24/02/2024 08:30",
-                        style: TextStyle(
-                            color: Colors.white, height: 2, fontSize: 16),
-                      ),
-                      Text(
-                        "Appointed Center Name 24/02/2024 08:30",
-                        style: TextStyle(
-                            color: Colors.white, height: 2, fontSize: 16),
-                      ),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
-                const SizedBox(
-                  height: 30,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "My Appointments - Active",
+                style: TextStyle(fontSize: 22, color: Colors.white),
+              ),
+              Container(
+                padding: const EdgeInsets.all(14),
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                    color: const Color(0XFF302E41),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color(0xFFFF7817),
+                    )),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Appointed Center Name 24/02/2024 08:30",
+                      style: TextStyle(
+                          color: Colors.white, height: 2, fontSize: 16),
+                    ),
+                    Text(
+                      "Appointed Center Name 24/02/2024 08:30",
+                      style: TextStyle(
+                          color: Colors.white, height: 2, fontSize: 16),
+                    ),
+                    Text(
+                      "Appointed Center Name 24/02/2024 08:30",
+                      style: TextStyle(
+                          color: Colors.white, height: 2, fontSize: 16),
+                    ),
+                  ],
                 ),
-                const Text(
-                  "My Appointments - Request",
-                  style: TextStyle(fontSize: 22, color: Colors.white),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                "My Appointments - Request",
+                style: TextStyle(fontSize: 22, color: Colors.white),
+              ),
+              Container(
+                padding: const EdgeInsets.all(14),
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                    color: const Color(0XFF302E41),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color(0xFFFF7817),
+                    )),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Appointed Center Name 24/02/2024 08:30",
+                      style: TextStyle(
+                          color: Colors.white, height: 2, fontSize: 16),
+                    ),
+                  ],
                 ),
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  width: 300,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: const Color(0XFF302E41),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: const Color(0xFFFF7817),
-                      )),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Appointed Center Name 24/02/2024 08:30",
-                        style: TextStyle(
-                            color: Colors.white, height: 2, fontSize: 16),
-                      ),
-                    ],
-                  ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                "My Appointments - Done",
+                style: TextStyle(fontSize: 22, color: Colors.white),
+              ),
+              Container(
+                padding: const EdgeInsets.all(14),
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                    color: const Color(0XFF302E41),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color(0xFFFF7817),
+                    )),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Appointed Center Name 24/02/2024 08:30",
+                      style: TextStyle(
+                          color: Colors.white, height: 2, fontSize: 16),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Text(
-                  "My Appointments - Done",
-                  style: TextStyle(fontSize: 22, color: Colors.white),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  width: 300,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: const Color(0XFF302E41),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: const Color(0xFFFF7817),
-                      )),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Appointed Center Name 24/02/2024 08:30",
-                        style: TextStyle(
-                            color: Colors.white, height: 2, fontSize: 16),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

@@ -3,7 +3,7 @@ import 'package:carex/signup_vehicle.dart';
 import 'package:flutter/material.dart';
 
 class SignUpVehicle extends StatefulWidget {
-  SignUpVehicle({super.key});
+  const SignUpVehicle({super.key});
 
   @override
   State<SignUpVehicle> createState() => _SignUpVehicleState();
