@@ -1,6 +1,7 @@
 //import 'package:carex/user_details.dart';
 
-import 'package:carex/center.dart';
+import 'package:carex/body_wash_profile.dart';
+import 'package:carex/centres.dart';
 import 'package:carex/home_screen.dart';
 import 'package:carex/mechanic.dart';
 import 'package:carex/profile_screen.dart';
@@ -375,61 +376,139 @@ class _MyWidgetState extends State<BodywashPage> {
                 const SizedBox(
                   height: 15,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFFFF7817),
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/bodywash_photo.png"),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 22.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "AMW Body Wash",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Color(0XFFFFFFFF),
-                              ),
-                            ),
-                            Text(
-                              "From : Kegalle",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Color(0XFFFFFFFF),
-                              ),
-                            ),
-                          ],
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BodyWashProfile()));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(7),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(0xFFFF7817),
+                          width: 2.0,
                         ),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      const SizedBox(
-                        width: 55,
+                      child: Row(
+                        children: [
+                          Image.asset("assets/bodywash_photo.png"),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 22.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "AMW Body Wash",
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Color(0XFFFFFFFF),
+                                  ),
+                                ),
+                                Text(
+                                  "From : Kegalle",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Color(0XFFFFFFFF),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 55,
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                                padding: const EdgeInsets.all(9),
+                                color: const Color(0xFFFF7817),
+                                child:
+                                    Image.asset("assets/file-Regular (1).png")),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                                padding: const EdgeInsets.all(8),
+                                color: const Color(0xFFFF7817),
+                                child: Image.asset("assets/phone-Regular.png")),
+                          )
+                        ],
                       ),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                            padding: const EdgeInsets.all(9),
-                            color: const Color(0xFFFF7817),
-                            child: Image.asset("assets/file-Regular (1).png")),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BodyWashProfile()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color(0xFFFF7817),
+                        width: 2.0,
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                            padding: const EdgeInsets.all(8),
-                            color: const Color(0xFFFF7817),
-                            child: Image.asset("assets/phone-Regular.png")),
-                      )
-                    ],
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      children: [
+                        Image.asset("assets/bodywash_photo.png"),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 22.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "AMW Body Wash",
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Color(0XFFFFFFFF),
+                                ),
+                              ),
+                              Text(
+                                "From : Kegalle",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Color(0XFFFFFFFF),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 55,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                              padding: const EdgeInsets.all(9),
+                              color: const Color(0xFFFF7817),
+                              child:
+                                  Image.asset("assets/file-Regular (1).png")),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                              padding: const EdgeInsets.all(8),
+                              color: const Color(0xFFFF7817),
+                              child: Image.asset("assets/phone-Regular.png")),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],

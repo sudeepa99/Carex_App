@@ -1,3 +1,4 @@
+import 'package:carex/appointment_screen.dart';
 import 'package:carex/body_wash.dart';
 import 'package:flutter/material.dart';
 
@@ -253,7 +254,12 @@ class _BodyWashProfileState extends State<BodyWashProfile> {
                 child: SizedBox(
                   width: 270.0,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AppointmentScreen()));
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                         const Color(0xFFFF7817),

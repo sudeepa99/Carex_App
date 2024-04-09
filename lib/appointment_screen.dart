@@ -27,7 +27,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 20.0),
         color: const Color(0XFF22252B),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -261,6 +261,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
                     child: TextField(
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: const Color.fromARGB(255, 59, 58, 57),
@@ -271,6 +274,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                             color: Color(0xFFFF7817),
                           ),
                         ),
+                        hintStyle: const TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   )
@@ -278,7 +284,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               ),
             ),
             const SizedBox(
-              height: 160,
+              height: 140,
             ),
             Center(
               child: SizedBox(

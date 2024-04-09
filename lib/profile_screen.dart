@@ -1,4 +1,4 @@
-import 'package:carex/center.dart';
+import 'package:carex/centres.dart';
 import 'package:carex/home_screen.dart';
 import 'package:carex/mechanic.dart';
 import 'package:flutter/cupertino.dart';

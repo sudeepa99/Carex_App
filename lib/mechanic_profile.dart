@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:carex/appointment_screen.dart';
 import 'package:carex/mechanic.dart';
 import 'package:flutter/material.dart';
 
@@ -282,7 +283,12 @@ class _MechanicProfileState extends State<MechanicProfile> {
                 child: SizedBox(
                   width: 270.0,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AppointmentScreen()));
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                         const Color(0xFFFF7817),

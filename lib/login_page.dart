@@ -1,6 +1,10 @@
+import 'dart:convert';
+
+import 'package:carex/config.dart';
 import 'package:carex/home_screen.dart';
 import 'package:carex/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,11 +16,49 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
 
   TextEditingController _passwordController = TextEditingController();
 
-  //TextEditingController _emailController = TextEditingController();
+  // TextEditingController _emailController = TextEditingController();
+
+  //late SharedPreferences prefs;
+  @override
+  // void initState() {
+  //   super.initState();
+  //   initSharedPref();
+  // }
+
+  // void initSharedPref() async {
+  //   prefs = await SharedPreferences.getInstance();
+  // }
+
+  void registerUserLogin() async {
+    var reqBody = {
+      "email": _emailController.text,
+      "password": _passwordController.text,
+    };
+    var response = await http.post(Uri.parse(login),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(reqBody));
+
+    var jsonResponse = jsonDecode(response.body);
+
+    print(jsonResponse['status']);
+
+    // if (jsonResponse['status'] != null && jsonResponse['status'] == true) {
+    //   var myToken = jsonResponse['token'];
+    //   prefs.setString('token', myToken);
+    //   Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //           builder: (context) => HomeScreen(
+    //               // token: myToken,
+    //               )));
+    // } else {
+    //   print("Something went wrong");
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,12 +147,15 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          controller: _usernameController,
-                          validator: (text) {
-                            if (text == null || text.isEmpty) {
-                              return 'Please enter your name';
-                            } else if (text.length < 6) {
-                              return 'User name must be atleast five characters';
+                          controller: _emailController,
+                          validator: (emailAdd) {
+                            if (emailAdd == null || emailAdd.isEmpty) {
+                              return 'Please enter your email address';
+                            }
+                            if (!RegExp(
+                                    r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                                .hasMatch(emailAdd)) {
+                              return 'Please enter a valid email address';
                             }
                             return null;
                           },
@@ -187,6 +232,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
+                            //registerUserLogin();
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

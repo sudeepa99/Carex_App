@@ -1,6 +1,7 @@
-import 'dart:ffi';
+//import 'dart:ffi';
 
-import 'package:carex/center.dart';
+import 'package:carex/appointment_screen.dart';
+import 'package:carex/centres.dart';
 import 'package:flutter/material.dart';
 
 class ServiceCentreProfile extends StatefulWidget {
@@ -283,7 +284,12 @@ class _MechanicProfileState extends State<ServiceCentreProfile> {
                 child: SizedBox(
                   width: 270.0,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AppointmentScreen()));
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                         const Color(0xFFFF7817),

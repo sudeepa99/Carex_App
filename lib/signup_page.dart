@@ -1,5 +1,9 @@
-import 'package:carex/signup_vehicle.dart';
+import 'dart:convert';
+
+import 'package:carex/config.dart';
+import 'package:carex/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -11,6 +15,9 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
 
+  late String password_check;
+  late String confirm_password;
+
   TextEditingController _firstnameController = TextEditingController();
 
   TextEditingController _lastnameController = TextEditingController();
@@ -20,6 +27,66 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _contactNumberController = TextEditingController();
 
   TextEditingController _emailController = TextEditingController();
+
+  TextEditingController _streetController = TextEditingController();
+  TextEditingController _cityController = TextEditingController();
+  TextEditingController _provinceController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
+
+  void registerUser() async {
+    var regBody = {
+      "firstname": _firstnameController.text,
+      "lastname": _lastnameController.text,
+      "nic": _nicNumberController.text,
+      "contactNumber": _contactNumberController.text,
+      "email": _emailController.text,
+      "street": _streetController.text,
+      "city": _cityController.text,
+      "province": _provinceController.text,
+      "password": _passwordController.text,
+    };
+
+    var response = await http.post(
+      Uri.parse(registration),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode(regBody),
+    );
+
+    var jsonResponse = jsonDecode(response.body);
+
+    print(jsonResponse['status']);
+
+    if (jsonResponse['status']) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+    } else {
+      print("Something went wrong");
+    }
+
+    // try {
+
+    //   if (response.statusCode == 200) {
+    //     // Registration successful
+    //     print("Registration Successful");
+    //     print(response.body);
+    //     // Navigate to next screen or show success message
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(builder: (context) => const HomeScreen()),
+    //     );
+    //   } else {
+    //     // Registration failed
+    //     print("Registration Failed");
+    //     print(response.body);
+    //     // Handle error response, show error message to user, etc.
+    //   }
+    // } catch (error) {
+    //   // Exception occurred during registration
+    //   print("Error occurred during registration: $error");
+    //   // Handle error, show error message to user, etc.
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -310,6 +377,247 @@ class _SignUpState extends State<SignUp> {
                               return null;
                             }),
                       ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Street/Lane*",
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(255, 244, 247, 1)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                          ),
+                          controller: _streetController,
+                          validator: (street) {
+                            if (street == null || street.isEmpty) {
+                              return "Please enter your street";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "City*",
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(255, 244, 247, 1)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                          ),
+                          controller: _cityController,
+                          validator: (city) {
+                            if (city == null || city.isEmpty) {
+                              return "Please enter your city";
+                            } else if (RegExp(r'\d').hasMatch(city)) {
+                              return 'City should not contain numerical values';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Province*",
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(255, 244, 247, 1)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                          ),
+                          controller: _provinceController,
+                          validator: (province) {
+                            if (province == null || province.isEmpty) {
+                              return "Please enter your province";
+                            } else if (RegExp(r'\d').hasMatch(province)) {
+                              return 'Province should not contain numerical values';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Password*",
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(255, 244, 247, 1)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                          ),
+                          onChanged: (password) {
+                            password_check = password;
+                          },
+                          controller: _passwordController,
+                          validator: (password) {
+                            if (password == null || password.isEmpty) {
+                              return "Please enter your password";
+                            } else if (password.length < 9) {
+                              return 'Password shoulde be atleast 8 characters';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Confirmation Password*",
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(255, 244, 247, 1)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFFF7817),
+                              ),
+                            ),
+                          ),
+                          onChanged: (confirmPassword) {
+                            confirm_password = confirmPassword;
+                          },
+                          controller: _confirmPasswordController,
+                          validator: (confirmPassword) {
+                            if (confirmPassword == null ||
+                                confirmPassword.isEmpty) {
+                              return "Please enter your password";
+                            } else if (confirmPassword != password_check) {
+                              return "Passwords do not match";
+                            }
+
+                            return null;
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -319,33 +627,47 @@ class _SignUpState extends State<SignUp> {
                 Center(
                   child: SizedBox(
                     width: 250.0,
-                    height: 50.0,
                     child: ElevatedButton(
                       onPressed: () {
                         if (formKey1.currentState!.validate()) {
+                          registerUser();
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const SignUpVehicle()));
+                                  builder: (context) => const LoginPage()));
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFFFF7817),
+                        ),
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                            const EdgeInsets.all(10)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                       ),
-                      child: Column(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            "Add More Details",
+                          Text(
+                            "Sign Up",
                             style: TextStyle(
                               color: Color.fromRGBO(255, 244, 247, 1),
                               fontSize: 18.0,
                             ),
                           ),
-                          const SizedBox(
-                            height: 10.0,
+                          SizedBox(
+                            width: 10.0,
                           ),
-                          Image.asset("assets/chevron-down-Filled.png"),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Color.fromRGBO(255, 244, 247, 1),
+                          ),
                         ],
                       ),
                     ),

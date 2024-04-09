@@ -1,11 +1,14 @@
 import 'package:carex/body_wash.dart';
-import 'package:carex/center.dart';
+import 'package:carex/centres.dart';
+
 import 'package:carex/mechanic.dart';
 import 'package:carex/profile_screen.dart';
 import 'package:carex/tyre_center.dart';
 import 'package:flutter/material.dart';
+//import 'package:jwt_decoder/jwt_decoder.dart';
 
 class HomeScreen extends StatefulWidget {
+  //final token;
   const HomeScreen({super.key});
 
   @override
@@ -13,6 +16,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // late String email;
+  // @override
+  // void initState() {
+  //    TODO: implement initState
+  //   super.initState();
+
+  //   Map<String, dynamic> jwtDedcodedToken = JwtDecoder.decode(widget.token);
+
+  //   email = jwtDedcodedToken['email'];
+  // }
+
   int myIndex = 0;
   String _dropdownvalue = 'Prius';
   bool _isDropdownOpen = true;
@@ -42,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: IconButton(
                 onPressed: () {
                   // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => ChatScreen()));
+                  //     MaterialPageRoute(builder: (context) => ChatPage()));
                 },
                 icon: Image.asset(
                   "assets/chat.png",
@@ -526,7 +540,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 12.0,
                       ),
                       Text(
-                        "Western Srvice Center PVT",
+                        "Western Service Center PVT",
                         style: TextStyle(
                           fontSize: 16.0,
                           color: Color(0xFFFF7817),
